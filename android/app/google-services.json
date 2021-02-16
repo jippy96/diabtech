@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "55302697007",
+    "project_id": "diabtech",
+    "storage_bucket": "diabtech.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55302697007:android:6e3059aed608e367ff16da",
+        "android_client_info": {
+          "package_name": "com.example.diabtech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "55302697007-ihvmvtq4pa13k971d9s4p16gdn1tkumh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVbYPkYGj7EmVQsMuZzgLeWwmw71MXe2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "55302697007-ihvmvtq4pa13k971d9s4p16gdn1tkumh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
