@@ -3,6 +3,7 @@ import 'package:diabtech/features/home/presentation/home.dart';
 import 'package:diabtech/features/intro/intro.dart';
 import 'package:diabtech/features/signIn/domain/entities/user.dart';
 import 'package:diabtech/features/signIn/presentation/bloc/signin_bloc.dart';
+import 'package:diabtech/index.dart';
 import 'package:diabtech/utils/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ void main() async {
   await Firebase.initializeApp();
   FirebaseFirestore.instance.clearPersistence();
 
-  // Récupération des infos de l'user du cache
+  // Récupération des infos de l'userà du cache
   CacheUserInfo().getCachedUserInfo().then((result) {
     user = result;
     runApp(MyApp());
@@ -32,8 +33,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          accentColor: Colors.transparent,
+          splashColor: Colors.transparent,
         ),
-        home: (user == null) ? Intro() : Home(),
+        home: (user == null) ? Intro() : Index(),
       ),
     );
   }

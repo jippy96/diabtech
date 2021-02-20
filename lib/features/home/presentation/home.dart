@@ -1,6 +1,7 @@
 import 'package:diabtech/core/colors.dart';
+import 'package:diabtech/features/services/presentation/all_services.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -8,11 +9,26 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int n = 6;
+  List<String> content = [
+    'Diabète',
+    'Services',
+    'Consultation',
+  ];
+  List<String> content2 = [
+    'Nutrition',
+    'Hygiène',
+    'Conseil',
+  ];
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: primaryColor,
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
           child: Stack(
         children: [
@@ -27,16 +43,15 @@ class _HomeState extends State<Home> {
           ),
           Positioned(
             child: Container(
-              height: height,
               width: width,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 60),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,28 +89,59 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                     SizedBox(height: 10),
-                    Container(
-                      height: 350,
-                      width: width,
-                      child: GridView.builder(
-                        itemCount: 4,
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 4.0,
-                          crossAxisSpacing: 4.0,
+                    for (var i = 0; i < n / 2; i++)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 15,
+                          vertical: 5,
                         ),
-                        itemBuilder: (context, index) => Card(
-                          elevation: 10.0,
-                          shadowColor: Colors.black26,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(15.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Container(
+                              height: width * .4,
+                              width: width * .4,
+                              child: GestureDetector(
+                                onTap: () {
+                                  switch (i) {
+                                    case 0:
+                                      break;
+                                    case 1:
+                                      Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                          builder: (context) => AllService(),
+                                        ),
+                                      );
+                                      break;
+                                    case 2:
+                                      break;
+                                    default:
+                                  }
+                                },
+                                child: Card(
+                                  child:
+                                      Center(child: Text(content.elementAt(i))),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
+                            Container(
+                              height: width * .4,
+                              width: width * .4,
+                              child: Card(
+                                child:
+                                    Center(child: Text(content2.elementAt(i))),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    )
                   ],
                 ),
               ),
